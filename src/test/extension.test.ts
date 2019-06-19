@@ -11,10 +11,13 @@ suite('Extension Tests', () => {
     await window.showTextDocument(document);
 
     const useRelative = true;
-    assert.strictEqual(
-      getPath(useRelative),
-      workspace.asRelativePath(testPath),
-    );
+    const editor = window.activeTextEditor;
+    if (editor !== undefined) {
+      assert.strictEqual(
+        getPath(editor, useRelative),
+        workspace.asRelativePath(testPath),
+      );
+    }
   });
 
   test('Absolute path works', async () => {
@@ -23,6 +26,9 @@ suite('Extension Tests', () => {
     await window.showTextDocument(document);
 
     const useRelative = false;
-    assert.strictEqual(getPath(useRelative), testPath.fsPath);
+    const editor = window.activeTextEditor;
+    if (editor !== undefined) {
+      assert.strictEqual(getPath(editor, useRelative), testPath.fsPath);
+    }
   });
 });
