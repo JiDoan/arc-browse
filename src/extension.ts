@@ -15,6 +15,8 @@ export const activate = (context: ExtensionContext) => {
   const disposable = commands.registerCommand('extension.arc-browse', () => {
     const config = workspace.getConfiguration('arc-browse');
     const useRelative = config.get<boolean>('relative', true);
+    const branch = config.get<string>('defaultBranch', "master");
+    branch.replace(" ", "-");
 
     const editor = window.activeTextEditor;
     if (editor === undefined) {
@@ -27,7 +29,7 @@ export const activate = (context: ExtensionContext) => {
     const line = editor.selection.anchor.line;
 
     const term = window.createTerminal('arc browse');
-    term.sendText(`arc browse ${path}:${line}`);
+    term.sendText(`arc browse --branch ${branch} ${path}:${line + 1}`);
     term.show();
   });
 

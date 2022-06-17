@@ -1,16 +1,16 @@
 {
   "name": "arc-browse",
   "displayName": "arc browse",
-  "publisher": "mezzode",
-  "description": "Adds a command to `arc browse` the current file, for quick access by users of Phabricator and Arcanist.",
-  "version": "1.0.2",
+  "publisher": "Jimmy Doan",
+  "description": "Adds a command to `arc browse` the current file, for quick access by users of Phabricator and Arcanist. Originally written by mezzode.",
+  "version": "1.1.0",
   "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mezzode/arc-browse.git"
+    "url": "https://github.com/jidoan/arc-browse.git"
   },
   "bugs": {
-    "url": "https://github.com/mezzode/arc-browse/issues"
+    "url": "https://github.com/jidoan/arc-browse/issues"
   },
   "engines": {
     "vscode": "^1.30.2"
@@ -36,6 +36,11 @@
           "type": "boolean",
           "default": true,
           "markdownDescription": "Whether to `arc browse` using relative path to the file (from the workspace root) rather than absolute."
+        },
+        "arc-browse.defaultBranch": {
+          "type": "string",
+          "default": "master",
+          "markdownDescription": "Defines the default `arc browse --branch <branch_name>` branch."
         }
       }
     },
@@ -59,15 +64,9 @@
     "@types/node": "^10.12.21",
     "tslint": "^5.12.1",
     "typescript": "^3.3.1",
-    "vscode": "^1.1.29"
+    "vscode": "^1.1.37"
   },
-  "badges": [
-    {
-      "url": "https://img.shields.io/travis/com/mezzode/arc-browse.svg?style=flat-square",
-      "href": "https://travis-ci.com/mezzode/arc-browse",
-      "description": "Travis CI"
-    }
-  ],
+  "badges": [],
   "icon": "images/icon.png",
   "galleryBanner": {
     "theme": "light"
